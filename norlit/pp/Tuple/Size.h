@@ -1,0 +1,43 @@
+#ifndef NORLIT_PP_TUPLE_SIZE_H
+#define NORLIT_PP_TUPLE_SIZE_H
+
+#include "../Basic.h"
+#include "../Control/If.h"
+#include "../Logical/Not.h"
+#include "../Logical/And.h"
+#include "../Logical/ToBool.h"
+
+#define NORLIT_PP_CHOOSE32(\
+	_1,_2,_3,_4,_5,_6,_7,_8,_9,_10,_11,_12,_13,_14,_15,_16,\
+	_17,_18,_19,_20,_21,_22,_23,_24,_25,_26,_27,_28,_29,_30,_31,_32,...) _32
+
+// Due to MSVC's broken support of __VA_ARGS__, we need some workaround
+#if _MSC_VER
+#   define NORLIT_PP_TUPLE_SIZE_NON_ZERO_IMPL(...) NORLIT_PP_CONCAT_2(NORLIT_PP_CHOOSE32(__VA_ARGS__, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,),)
+#   define NORLIT_PP_COUNT_COMMA(...) NORLIT_PP_CONCAT_2(NORLIT_PP_CHOOSE32(__VA_ARGS__, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0,),)
+#	define NORLIT_PP_TUPLE_ISEMPTY_REMOVE_PAREN(...) ,
+#	define NORLIT_PP_TUPLE_ISEMPTY_IMPL(...) \
+	NORLIT_PP_AND(\
+		NORLIT_PP_NOT(NORLIT_PP_TOBOOL(NORLIT_PP_COUNT_COMMA(__VA_ARGS__))),\
+		NORLIT_PP_AND(\
+			NORLIT_PP_NOT(NORLIT_PP_TOBOOL(NORLIT_PP_COUNT_COMMA(NORLIT_PP_TUPLE_ISEMPTY_REMOVE_PAREN __VA_ARGS__))),\
+			NORLIT_PP_AND(\
+				NORLIT_PP_NOT(NORLIT_PP_TOBOOL(NORLIT_PP_COUNT_COMMA(__VA_ARGS__()))),\
+				NORLIT_PP_TOBOOL(NORLIT_PP_COUNT_COMMA(NORLIT_PP_TUPLE_ISEMPTY_REMOVE_PAREN __VA_ARGS__()))\
+			)\
+		)\
+	)
+#	define NORLIT_PP_TUPLE_ISEMPTY(tuple) NORLIT_PP_TUPLE_ISEMPTY_IMPL tuple
+#   define NORLIT_PP_TUPLE_SIZE(tuple) NORLIT_PP_IF(NORLIT_PP_TUPLE_ISEMPTY(tuple),0,NORLIT_PP_TUPLE_SIZE_NON_ZERO_IMPL tuple)
+#else
+#   define NORLIT_PP_TUPLE_SIZE_NON_ZERO_IMPL(...) NORLIT_PP_CHOOSE32(__VA_ARGS__, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,)
+//	GCC Magic
+#	define NORLIT_PP_TUPLE_SIZE_IMPL(...) NORLIT_PP_CHOOSE32(x, ##__VA_ARGS__, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
+#   define NORLIT_PP_COUNT_COMMA(...) NORLIT_PP_CHOOSE32(__VA_ARGS__, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0,)
+#	define NORLIT_PP_TUPLE_SIZE(tuple) NORLIT_PP_TUPLE_SIZE_IMPL tuple
+#	define NORLIT_PP_TUPLE_ISEMPTY(tuple) NORLIT_PP_NOT(NORLIT_PP_TOBOOL(NORLIT_PP_TUPLE_SIZE(tuple)))
+#endif
+
+
+
+#endif

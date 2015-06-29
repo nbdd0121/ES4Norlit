@@ -1,0 +1,42 @@
+#ifndef NORLIT_PP_INC_H
+#define NORLIT_PP_INC_H
+
+#include "../Basic.h"
+
+#define NORLIT_PP_INC(x) NORLIT_PP_CONCAT_2(NORLIT_PP_INC_, x)
+
+#define NORLIT_PP_INC_0  1
+#define NORLIT_PP_INC_1  2
+#define NORLIT_PP_INC_2  3
+#define NORLIT_PP_INC_3  4
+#define NORLIT_PP_INC_4  5
+#define NORLIT_PP_INC_5  6
+#define NORLIT_PP_INC_6  7
+#define NORLIT_PP_INC_7  8
+#define NORLIT_PP_INC_8  9
+#define NORLIT_PP_INC_9  0
+#define NORLIT_PP_INC_10 11
+#define NORLIT_PP_INC_11 12
+#define NORLIT_PP_INC_12 13
+#define NORLIT_PP_INC_13 14
+#define NORLIT_PP_INC_14 15
+#define NORLIT_PP_INC_15 16
+#define NORLIT_PP_INC_16 17
+#define NORLIT_PP_INC_17 18
+#define NORLIT_PP_INC_18 19
+#define NORLIT_PP_INC_19 20
+#define NORLIT_PP_INC_20 21
+#define NORLIT_PP_INC_21 22
+#define NORLIT_PP_INC_22 23
+#define NORLIT_PP_INC_23 24
+#define NORLIT_PP_INC_24 25
+#define NORLIT_PP_INC_25 26
+#define NORLIT_PP_INC_26 27
+#define NORLIT_PP_INC_27 28
+#define NORLIT_PP_INC_28 29
+#define NORLIT_PP_INC_29 30
+#define NORLIT_PP_INC_30 31
+#define NORLIT_PP_INC_31 32
+#define NORLIT_PP_INC_32 33
+
+#endif

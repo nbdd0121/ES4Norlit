@@ -1,0 +1,42 @@
+#ifndef NORLIT_PP_DEC_H
+#define NORLIT_PP_DEC_H
+
+#include "../Basic.h"
+
+#define NORLIT_PP_DEC(x) NORLIT_PP_CONCAT_2(NORLIT_PP_DEC_, x)
+
+#define NORLIT_PP_DEC_0  Error
+#define NORLIT_PP_DEC_1  0
+#define NORLIT_PP_DEC_2  1
+#define NORLIT_PP_DEC_3  2
+#define NORLIT_PP_DEC_4  3
+#define NORLIT_PP_DEC_5  4
+#define NORLIT_PP_DEC_6  5
+#define NORLIT_PP_DEC_7  6
+#define NORLIT_PP_DEC_8  7
+#define NORLIT_PP_DEC_9  8
+#define NORLIT_PP_DEC_10 9
+#define NORLIT_PP_DEC_11 10
+#define NORLIT_PP_DEC_12 11
+#define NORLIT_PP_DEC_13 12
+#define NORLIT_PP_DEC_14 13
+#define NORLIT_PP_DEC_15 14
+#define NORLIT_PP_DEC_16 15
+#define NORLIT_PP_DEC_17 16
+#define NORLIT_PP_DEC_18 17
+#define NORLIT_PP_DEC_19 18
+#define NORLIT_PP_DEC_20 19
+#define NORLIT_PP_DEC_21 20
+#define NORLIT_PP_DEC_22 21
+#define NORLIT_PP_DEC_23 22
+#define NORLIT_PP_DEC_24 23
+#define NORLIT_PP_DEC_25 24
+#define NORLIT_PP_DEC_26 25
+#define NORLIT_PP_DEC_27 26
+#define NORLIT_PP_DEC_28 27
+#define NORLIT_PP_DEC_29 28
+#define NORLIT_PP_DEC_30 29
+#define NORLIT_PP_DEC_31 30
+#define NORLIT_PP_DEC_32 31
+
+#endif
